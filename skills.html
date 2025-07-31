@@ -9,30 +9,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc; /* slate-50 */
             color: #1e293b; /* slate-800 */
         }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 320px;
-            max-height: 400px;
+        .skill-list {
+            max-height: 1000px; /* Large enough to show all content */
+            transition: max-height 0.5s ease-in-out;
+            overflow: hidden;
+            background-color: #f8fafc; /* slate-50 */
         }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
-            }
+        .skill-list.collapsed {
+            max-height: 0;
         }
-        .skill-bar-container {
-            position: relative;
-            width: 100%;
-            height: 350px;
+        .expand-icon {
+            transition: transform 0.3s ease-in-out;
+        }
+        .expand-icon.rotated {
+            transform: rotate(-180deg);
         }
     </style>
 </head>
@@ -60,49 +57,67 @@
     </header>
 
     <main class="container mx-auto px-6 py-12">
-        <section id="competences" class="py-16 bg-white rounded-xl p-8">
-            <h2 class="text-3xl font-bold text-center text-slate-900 mb-4">Compétences Techniques</h2>
-            <p class="text-center text-slate-600 max-w-3xl mx-auto mb-12">
-                Cette section présente une vue d'ensemble de mes compétences, organisées par grands domaines. Le diagramme radar illustre l'équilibre de mon profil interdisciplinaire, tandis que les graphiques ci-dessous détaillent ma maîtrise des outils et langages spécifiques.
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-slate-900 mb-4">Arbre de Compétences</h2>
+            <p class="text-center text-slate-600 mb-12">
+                Explorez mes compétences organisées par grands domaines d'expertise. Cliquez sur une branche pour la déplier.
             </p>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="chart-container">
-                    <canvas id="skillsRadarChart"></canvas>
+
+            <div class="space-y-4">
+                <!-- Branch 1: Biologie -->
+                <div class="skill-branch bg-white rounded-lg shadow-sm overflow-hidden">
+                    <h3 class="branch-title flex items-center justify-between p-4 cursor-pointer font-semibold text-slate-800 text-lg">
+                        <span><i class="fas fa-dna w-6 text-blue-500 mr-3"></i>Biologie & Génomique</span>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </h3>
+                    <ul class="skill-list collapsed border-t border-slate-200 text-slate-600">
+                        <li class="skill-name p-4 pl-12 border-b border-slate-200 flex items-center justify-between cursor-pointer"><span>Analyse de données "omiques"</span><i class="fas fa-chevron-down expand-icon text-sm"></i></li>
+                        <ul class="skill-list collapsed bg-slate-100">
+                            <li class="p-3 pl-16">Analyse de données NGS</li>
+                            <li class="p-3 pl-16">Génomique comparative & Annotation</li>
+                        </ul>
+                        <li class="skill-name p-4 pl-12 border-b border-slate-200 flex items-center justify-between cursor-pointer"><span>Modélisation Métabolique</span><i class="fas fa-chevron-down expand-icon text-sm"></i></li>
+                        <ul class="skill-list collapsed bg-slate-100">
+                            <li class="p-3 pl-16">Reconstruction de GEMs</li>
+                            <li class="p-3 pl-16">Analyse par bilan de flux (FBA) avec COBRApy</li>
+                        </ul>
+                        <li class="p-4 pl-12">Bases solides en biologie moléculaire et cellulaire</li>
+                    </ul>
                 </div>
-                <div class="space-y-6 text-slate-600">
-                    <div>
-                        <h3 class="font-bold text-lg text-slate-800 mb-2">Profil Interdisciplinaire</h3>
-                        <p>Ma formation m'a permis de développer une expertise équilibrée à l'intersection de trois domaines clés, me permettant de traduire des questions biologiques complexes en solutions computationnelles et statistiques robustes.</p>
-                    </div>
-                     <div class="flex items-start space-x-3">
-                        <span class="flex-shrink-0 w-5 h-5 rounded-full bg-blue-500 mt-1"></span>
-                        <p><strong class="text-slate-700">Biologie & Génomique :</strong> Compréhension approfondie des concepts biologiques et des technologies omiques (NGS, génomique comparative, etc.).</p>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="flex-shrink-0 w-5 h-5 rounded-full bg-teal-500 mt-1"></span>
-                        <p><strong class="text-slate-700">Informatique & Programmation :</strong> Développement de scripts, d'applications et gestion de bases de données pour l'analyse de données.</p>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="flex-shrink-0 w-5 h-5 rounded-full bg-amber-500 mt-1"></span>
-                        <p><strong class="text-slate-700">Statistiques & IA :</strong> Application de modèles statistiques et d'algorithmes d'apprentissage automatique pour extraire des connaissances à partir de données complexes.</p>
-                    </div>
+
+                <!-- Branch 2: Informatique -->
+                <div class="skill-branch bg-white rounded-lg shadow-sm overflow-hidden">
+                    <h3 class="branch-title flex items-center justify-between p-4 cursor-pointer font-semibold text-slate-800 text-lg">
+                        <span><i class="fas fa-laptop-code w-6 text-teal-500 mr-3"></i>Informatique & Programmation</span>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </h3>
+                    <ul class="skill-list collapsed border-t border-slate-200 text-slate-600">
+                        <li class="p-4 pl-12"><b>Langages :</b> Python (Avancé), R (Avancé), SQL, Bash, Java, C</li>
+                        <li class="skill-name p-4 pl-12 border-b border-t border-slate-200 flex items-center justify-between cursor-pointer"><span>Développement & Outils</span><i class="fas fa-chevron-down expand-icon text-sm"></i></li>
+                        <ul class="skill-list collapsed bg-slate-100">
+                            <li class="p-3 pl-16">Gestion de version (Git / GitHub)</li>
+                            <li class="p-3 pl-16">Environnements conteneurisés (Docker)</li>
+                            <li class="p-3 pl-16">Gestion de workflows (Nextflow)</li>
+                        </ul>
+                        <li class="p-4 pl-12"><b>Web :</b> Backend (Django), Frontend (Next.js)</li>
+                    </ul>
+                </div>
+
+                <!-- Branch 3: Mathématiques -->
+                <div class="skill-branch bg-white rounded-lg shadow-sm overflow-hidden">
+                    <h3 class="branch-title flex items-center justify-between p-4 cursor-pointer font-semibold text-slate-800 text-lg">
+                        <span><i class="fas fa-calculator w-6 text-amber-500 mr-3"></i>Mathématiques & Statistiques</span>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </h3>
+                    <ul class="skill-list collapsed border-t border-slate-200 text-slate-600">
+                        <li class="p-4 pl-12"><b>Machine Learning :</b> Modèles supervisés & non-supervisés (Scikit-learn)</li>
+                        <li class="p-4 pl-12 border-b border-t border-slate-200"><b>Analyse de données :</b> Tests statistiques, Analyse exploratoire</li>
+                        <li class="p-4 pl-12"><b>Visualisation :</b> Matplotlib, Seaborn, ggplot2</li>
+                        <li class="p-4 pl-12 border-t border-slate-200"><b>Modélisation de réseaux :</b> Stochastic Block Models (SBM)</li>
+                    </ul>
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mt-20">
-                <div class="w-full">
-                    <h3 class="text-xl font-bold text-center text-slate-800 mb-4">Langages de Programmation</h3>
-                    <div class="skill-bar-container">
-                        <canvas id="languagesChart"></canvas>
-                    </div>
-                </div>
-                <div class="w-full">
-                    <h3 class="text-xl font-bold text-center text-slate-800 mb-4">Outils & Méthodes</h3>
-                    <div class="skill-bar-container">
-                        <canvas id="toolsChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
     <footer>
@@ -117,28 +132,26 @@
                 mobileMenu.classList.toggle('hidden');
             });
 
-            const radarCtx = document.getElementById('skillsRadarChart').getContext('2d');
-            new Chart(radarCtx, {
-                type: 'radar',
-                data: { labels: ['Biologie & Génomique', 'Informatique & Programmation', 'Statistiques & IA'], datasets: [{ label: 'Équilibre des Compétences', data: [85, 80, 75], backgroundColor: 'rgba(59, 130, 246, 0.2)', borderColor: 'rgba(59, 130, 246, 1)', pointBackgroundColor: 'rgba(59, 130, 246, 1)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgba(59, 130, 246, 1)' }] },
-                options: { maintainAspectRatio: false, scales: { r: { angleLines: { color: 'rgba(0, 0, 0, 0.1)' }, grid: { color: 'rgba(0, 0, 0, 0.1)' }, pointLabels: { font: { size: 14 } }, ticks: { backdropColor: 'transparent', stepSize: 20, display: false }, suggestedMin: 0, suggestedMax: 100 } }, plugins: { legend: { display: false } } }
+            const clickableItems = document.querySelectorAll('.branch-title, .skill-name');
+
+            clickableItems.forEach(item => {
+                item.addEventListener('click', (event) => {
+                    // Prevent click on a sub-item from triggering the parent's click event
+                    event.stopPropagation();
+                    
+                    const list = item.nextElementSibling;
+                    // Check if the next element is a list to expand/collapse
+                    if (list && list.tagName === 'UL') {
+                        const icon = item.querySelector('.expand-icon');
+                        
+                        list.classList.toggle('collapsed');
+                        if (icon) {
+                            icon.classList.toggle('rotated');
+                        }
+                    }
+                });
             });
 
-            const commonBarOptions = { indexAxis: 'y', maintainAspectRatio: false, scales: { x: { beginAtZero: true, grid: { display: false }, ticks: { display: false } }, y: { grid: { display: false }, ticks: { font: { size: 14, weight: '500' }, color: '#334155' } } }, plugins: { legend: { display: false }, tooltip: { enabled: false } } };
-            
-            const languagesCtx = document.getElementById('languagesChart').getContext('2d');
-            new Chart(languagesCtx, {
-                type: 'bar',
-                data: { labels: ['Python', 'R', 'SQL', 'JAVA', 'Bash/Shell', 'C'], datasets: [{ label: 'Maîtrise', data: [90, 85, 80, 65, 70, 50], backgroundColor: ['#14b8a6', '#14b8a6', '#14b8a6', '#a1a1aa', '#14b8a6', '#a1a1aa'], borderRadius: 4 }] },
-                options: commonBarOptions
-            });
-
-            const toolsCtx = document.getElementById('toolsChart').getContext('2d');
-            new Chart(toolsCtx, {
-                type: 'bar',
-                data: { labels: ['Analyse NGS', 'Machine Learning', 'Gestion de BDD', 'Phylogénie', 'Visualisation', 'Méthodes Agiles'], datasets: [{ label: 'Expérience', data: [90, 80, 85, 75, 88, 70], backgroundColor: ['#f59e0b', '#f59e0b', '#f59e0b', '#a1a1aa', '#f59e0b', '#a1a1aa'], borderRadius: 4 }] },
-                options: commonBarOptions
-            });
         });
     </script>
 </body>
