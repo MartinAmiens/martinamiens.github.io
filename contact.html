@@ -1,49 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Martin AMIENS - Contact</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Martin Amiens - Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #1e293b; /* slate-800 */
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="experiences.html">Experiences</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-slate-800">Martin Amiens</a>
+            <div class="hidden md:flex space-x-8 text-slate-600 font-medium">
+                <a href="experiences.html" class="hover:text-blue-600 transition-colors">Expériences & Formation</a>
+                <a href="skills.html" class="hover:text-blue-600 transition-colors">Compétences</a>
+                <a href="contact.html" class="text-blue-600 font-semibold">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-slate-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
         </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="experiences.html" class="block text-slate-600 hover:text-blue-600 transition-colors">Expériences & Formation</a>
+            <a href="skills.html" class="block text-slate-600 hover:text-blue-600 transition-colors">Compétences</a>
+            <a href="contact.html" class="block text-slate-600 hover:text-blue-600 transition-colors">Contact</a>
+        </div>
     </header>
-    <main>
-        <section id="contact">
-            <h2>Contact me</h2>
-            <p class="intro-text">Please do not hesitate to contact me via the following platforms</p>
 
-            <div class="social-link-grid">
-                <a href="https://github.com/MartinAmiens" target="_blank" class="social-link-item">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
+    <main class="container mx-auto px-6 py-12">
+        <section id="contact" class="max-w-4xl mx-auto text-center py-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Contactez-moi</h2>
+            <p class="mt-4 text-lg text-slate-600">N'hésitez pas à me contacter pour toute opportunité ou discussion.</p>
+            <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8">
+                <a href="https://github.com/MartinAmiens" target="_blank" class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col items-center space-y-3">
+                    <i class="fab fa-github text-4xl text-slate-700"></i>
+                    <span class="font-semibold text-slate-800">GitHub</span>
                 </a>
-
-                <a href="https://www.linkedin.com/in/martin-amiens-204157199" target="_blank" class="social-link-item">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
+                <a href="https://www.linkedin.com/in/martin-amiens-204157199" target="_blank" class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col items-center space-y-3">
+                    <i class="fab fa-linkedin text-4xl text-blue-700"></i>
+                    <span class="font-semibold text-slate-800">LinkedIn</span>
                 </a>
-
-                <a href="mailto:martin.amiens@gmail.com" class="social-link-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>Email</span>
+                <a href="mailto:martin.amiens@gmail.com" class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col items-center space-y-3">
+                    <i class="fas fa-envelope text-4xl text-red-600"></i>
+                    <span class="font-semibold text-slate-800">Email</span>
                 </a>
-
             </div>
         </section>
     </main>
+
     <footer>
-        <p>&copy; 2025 Martin AMIENS, All rights reserved.</p>
+        <p class="text-center py-4 text-slate-500 text-sm">&copy; 2025 Martin AMIENS, All rights reserved.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
