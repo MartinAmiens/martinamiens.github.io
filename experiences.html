@@ -15,18 +15,27 @@
             color: #1e293b; /* slate-800 */
         }
         .timeline-item-content {
-            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-            overflow: hidden;
+            /* Positioning to float over the content */
+            position: absolute;
+            left: 50%;
+            top: calc(100% + 0.5rem); /* Position below the header card */
+            width: 90%;
+            max-width: 500px; /* Avoid being too wide */
+            z-index: 10;
+            
+            /* Centering and transition */
+            transform: translateX(-50%);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            pointer-events: none; /* Not clickable when hidden */
         }
         .timeline-item-content.hidden {
-            max-height: 0;
             opacity: 0;
-            margin-top: 0;
+            transform: translateX(-50%) scale(0.95);
         }
         .timeline-item-content.visible {
-            max-height: 500px; /* Adjust as needed */
             opacity: 1;
-            margin-top: 1rem;
+            transform: translateX(-50%) scale(1);
+            pointer-events: auto; /* Clickable when visible */
         }
     </style>
 </head>
@@ -130,21 +139,29 @@
 
             const timelineContainer = document.getElementById('timeline-container');
             educationData.forEach((item, index) => {
+                const entryWrapper = document.createElement('div');
+                entryWrapper.className = 'relative'; // Positioning context for the details box
+
                 const isLeft = index % 2 === 0;
                 const timelineItem = document.createElement('div');
                 timelineItem.className = `relative flex items-center ${isLeft ? 'justify-start' : 'justify-end'}`;
                 
                 const content = `<div class="absolute left-1/2 w-8 h-8 bg-white rounded-full border-2 border-blue-500 flex items-center justify-center -translate-x-1/2"><span class="text-sm">${item.icon}</span></div><div class="w-5/12 p-4 bg-white rounded-lg shadow-md cursor-pointer timeline-item-header"><p class="text-sm text-blue-600 font-semibold">${item.year}</p><h3 class="font-bold text-slate-800">${item.title}</h3><p class="text-sm text-slate-500">${item.university}</p></div>`;
-                const detailsContent = `<div id="details-${index}" class="w-full md:w-10/12 lg:w-8/12 mx-auto timeline-item-content hidden"><div class="bg-slate-100 p-4 rounded-lg"><ul class="space-y-2 list-disc list-inside text-slate-600">${item.details.map(d => `<li>${d}</li>`).join('')}</ul></div></div>`;
-
                 timelineItem.innerHTML = content;
-                timelineContainer.appendChild(timelineItem);
-                
+
+                const detailsContent = `<div id="details-${index}" class="timeline-item-content hidden"><div class="bg-slate-100 p-4 rounded-lg shadow-lg"><ul class="space-y-2 list-disc list-inside text-slate-600">${item.details.map(d => `<li>${d}</li>`).join('')}</ul></div></div>`;
                 const detailsContainer = document.createElement('div');
                 detailsContainer.innerHTML = detailsContent;
-                timelineContainer.appendChild(detailsContainer.firstChild);
 
-                timelineItem.querySelector('.timeline-item-header').addEventListener('click', () => {
+                // Append header and details to the wrapper
+                entryWrapper.appendChild(timelineItem);
+                entryWrapper.appendChild(detailsContainer.firstChild);
+
+                // Append the whole entry to the timeline
+                timelineContainer.appendChild(entryWrapper);
+
+                // The event listener is on the header, which is inside the timelineItem
+                entryWrapper.querySelector('.timeline-item-header').addEventListener('click', () => {
                     const detailsEl = document.getElementById(`details-${index}`);
                     const isVisible = detailsEl.classList.contains('visible');
                     document.querySelectorAll('.timeline-item-content').forEach(el => { el.classList.remove('visible'); el.classList.add('hidden'); });
