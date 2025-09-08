@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Martin Amiens - Compétences</title>
+    <title>Martin Amiens - Skills</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,8 +39,8 @@
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="text-xl font-bold text-slate-800">Martin Amiens</a>
             <div class="hidden md:flex space-x-8 text-slate-600 font-medium">
-                <a href="experiences.html" class="hover:text-blue-600 transition-colors">Expériences & Formation</a>
-                <a href="skills.html" class="text-blue-600 font-semibold">Compétences</a>
+                <a href="experiences.html" class="hover:text-blue-600 transition-colors">Experiences & Formation</a>
+                <a href="skills.html" class="text-blue-600 font-semibold">SKills</a>
                 <a href="contact.html" class="hover:text-blue-600 transition-colors">Contact</a>
             </div>
             <div class="md:hidden">
@@ -50,75 +50,76 @@
             </div>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
-            <a href="experiences.html" class="block text-slate-600 hover:text-blue-600 transition-colors">Expériences & Formation</a>
-            <a href="skills.html" class="block text-slate-600 hover:text-blue-600 transition-colors">Compétences</a>
+            <a href="experiences.html" class="block text-slate-600 hover:text-blue-600 transition-colors">Experiences & Formation</a>
+            <a href="skills.html" class="block text-slate-600 hover:text-blue-600 transition-colors">Skills</a>
             <a href="contact.html" class="block text-slate-600 hover:text-blue-600 transition-colors">Contact</a>
         </div>
     </header>
 
     <main class="container mx-auto px-6 py-12">
         <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold text-center text-slate-900 mb-4">Arbre de Compétences</h2>
+            <h2 class="text-3xl font-bold text-center text-slate-900 mb-4">Skill Tree</h2>
             <p class="text-center text-slate-600 mb-12">
-                Explorez mes compétences organisées par grands domaines d'expertise. Cliquez sur une branche pour la déplier.
+                Explore my skills organized by major areas of expertise. Click on a branch to expand it.
             </p>
-
+    
             <div class="space-y-4">
-                <!-- Branch 1: Biologie -->
+                <!-- Branch 1: Biology -->
                 <div class="skill-branch bg-white rounded-lg shadow-sm overflow-hidden">
                     <h3 class="branch-title flex items-center justify-between p-4 cursor-pointer font-semibold text-slate-800 text-lg">
-                        <span><i class="fas fa-dna w-6 text-blue-500 mr-3"></i>Biologie & Génomique</span>
+                        <span><i class="fas fa-dna w-6 text-blue-500 mr-3"></i>Biology & Genomics</span>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </h3>
                     <ul class="skill-list collapsed border-t border-slate-200 text-slate-600">
-                        <li class="skill-name p-4 pl-12 border-b border-slate-200 flex items-center justify-between cursor-pointer"><span>Analyse de données "omiques"</span><i class="fas fa-chevron-down expand-icon text-sm"></i></li>
+                        <li class="skill-name p-4 pl-12 border-b border-slate-200 flex items-center justify-between cursor-pointer"><span>Omics Data Analysis</span><i class="fas fa-chevron-down expand-icon text-sm"></i></li>
                         <ul class="skill-list collapsed bg-slate-100">
-                            <li class="p-3 pl-16">Analyse de données NGS</li>
-                            <li class="p-3 pl-16">Génomique comparative & Annotation</li>
+                            <li class="p-3 pl-16">NGS Data Analysis</li>
+                            <li class="p-3 pl-16">Comparative Genomics & Annotation</li>
                         </ul>
-                        <li class="skill-name p-4 pl-12 border-b border-slate-200 flex items-center justify-between cursor-pointer"><span>Modélisation Métabolique</span><i class="fas fa-chevron-down expand-icon text-sm"></i></li>
+                        <li class="skill-name p-4 pl-12 border-b border-slate-200 flex items-center justify-between cursor-pointer"><span>Metabolic Modeling</span><i class="fas fa-chevron-down expand-icon text-sm"></i></li>
                         <ul class="skill-list collapsed bg-slate-100">
-                            <li class="p-3 pl-16">Reconstruction de GEMs</li>
-                            <li class="p-3 pl-16">Analyse par bilan de flux (FBA) avec COBRApy</li>
+                            <li class="p-3 pl-16">GEMs Reconstruction</li>
+                            <li class="p-3 pl-16">Flux Balance Analysis (FBA) with COBRApy</li>
                         </ul>
-                        <li class="p-4 pl-12">Bases solides en biologie moléculaire et cellulaire</li>
+                        <li class="p-4 pl-12">Strong foundation in molecular and cellular biology</li>
                     </ul>
                 </div>
-
-                <!-- Branch 2: Informatique -->
+    
+                <!-- Branch 2: Computer Science -->
                 <div class="skill-branch bg-white rounded-lg shadow-sm overflow-hidden">
                     <h3 class="branch-title flex items-center justify-between p-4 cursor-pointer font-semibold text-slate-800 text-lg">
-                        <span><i class="fas fa-laptop-code w-6 text-teal-500 mr-3"></i>Informatique & Programmation</span>
+                        <span><i class="fas fa-laptop-code w-6 text-teal-500 mr-3"></i>Computer Science & Programming</span>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </h3>
                     <ul class="skill-list collapsed border-t border-slate-200 text-slate-600">
-                        <li class="p-4 pl-12"><b>Langages :</b> Python (Avancé), R (Avancé), SQL, Bash, Java, C</li>
-                        <li class="skill-name p-4 pl-12 border-b border-t border-slate-200 flex items-center justify-between cursor-pointer"><span>Développement & Outils</span><i class="fas fa-chevron-down expand-icon text-sm"></i></li>
+                        <li class="p-4 pl-12"><b>Languages:</b> Python (Advanced), R (Advanced), SQL, Bash, Java, C</li>
+                        <li class="skill-name p-4 pl-12 border-b border-t border-slate-200 flex items-center justify-between cursor-pointer"><span>Development & Tools</span><i class="fas fa-chevron-down expand-icon text-sm"></i></li>
                         <ul class="skill-list collapsed bg-slate-100">
-                            <li class="p-3 pl-16">Gestion de version (Git / GitHub)</li>
-                            <li class="p-3 pl-16">Environnements conteneurisés (Docker)</li>
-                            <li class="p-3 pl-16">Gestion de workflows (Nextflow)</li>
+                            <li class="p-3 pl-16">Version control (Git / GitHub)</li>
+                            <li class="p-3 pl-16">Containerized environments (Docker)</li>
+                            <li class="p-3 pl-16">Workflow management (Nextflow)</li>
                         </ul>
-                        <li class="p-4 pl-12"><b>Web :</b> Backend (Django), Frontend (Next.js)</li>
+                        <li class="p-4 pl-12"><b>Web:</b> Backend (Django), Frontend (Next.js)</li>
                     </ul>
                 </div>
-
-                <!-- Branch 3: Mathématiques -->
+    
+                <!-- Branch 3: Mathematics -->
                 <div class="skill-branch bg-white rounded-lg shadow-sm overflow-hidden">
                     <h3 class="branch-title flex items-center justify-between p-4 cursor-pointer font-semibold text-slate-800 text-lg">
-                        <span><i class="fas fa-calculator w-6 text-amber-500 mr-3"></i>Mathématiques & Statistiques</span>
+                        <span><i class="fas fa-calculator w-6 text-amber-500 mr-3"></i>Mathematics & Statistics</span>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </h3>
                     <ul class="skill-list collapsed border-t border-slate-200 text-slate-600">
-                        <li class="p-4 pl-12"><b>Machine Learning :</b> Modèles supervisés & non-supervisés (Scikit-learn)</li>
-                        <li class="p-4 pl-12 border-b border-t border-slate-200"><b>Analyse de données :</b> Tests statistiques, Analyse exploratoire</li>
-                        <li class="p-4 pl-12"><b>Visualisation :</b> Matplotlib, Seaborn, ggplot2</li>
-                        <li class="p-4 pl-12 border-t border-slate-200"><b>Modélisation de réseaux :</b> Stochastic Block Models (SBM)</li>
+                        <li class="p-4 pl-12"><b>Machine Learning:</b> Supervised & Unsupervised Models (Scikit-learn)</li>
+                        <li class="p-4 pl-12 border-b border-t border-slate-200"><b>Data Analysis:</b> Statistical tests, Exploratory analysis</li>
+                        <li class="p-4 pl-12"><b>Visualization:</b> Matplotlib, Seaborn, ggplot2</li>
+                        <li class="p-4 pl-12 border-t border-slate-200"><b>Network Modeling:</b> Stochastic Block Models (SBM)</li>
                     </ul>
                 </div>
             </div>
         </div>
     </main>
+
 
     <footer>
         <p class="text-center py-4 text-slate-500 text-sm">&copy; 2025 Martin AMIENS, All rights reserved.</p>
